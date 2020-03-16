@@ -1,27 +1,19 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "command": {
     "bootstrap": {
       "hoist": true,
       "noCi": true,
-      "npmClientArgs": [
-        "--no-package-lock"
-      ],
-      "nohoist": [
-        "egg"
-      ]
+      "npmClientArgs": ["--no-package-lock"],
+      "nohoist": ["egg"]
     },
     "publish": {
-      "ignoreChanges": [
-        "*.md"
-      ]
+      "ignoreChanges": ["*.md"]
     },
     "version": {
       "conventionalCommits": true
     }
   },
-  "npmClient": "npm",
+  "npmClient": "cnpm",
   "version": "0.2.49"
 }

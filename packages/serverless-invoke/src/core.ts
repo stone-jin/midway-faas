@@ -238,8 +238,8 @@ export abstract class InvokeCore implements IInvoke {
       请点击左侧文件目录中的代码文件进行调试
 
       ${
-        this.wrapperInfo
-          ? `
+      this.wrapperInfo
+        ? `
       函数的入口文件所在:
 
       ${this.wrapperInfo.fileName}  。
@@ -252,7 +252,7 @@ export abstract class InvokeCore implements IInvoke {
       感谢使用 midway-faas。
 
       `
-          : ''
+        : ''
       }
       */`);
   }

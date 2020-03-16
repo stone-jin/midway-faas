@@ -1,13 +1,14 @@
-import { BaseCLI, getSpecFile } from '@midwayjs/fcli-command-core';
-import { TestPlugin } from '@midwayjs/fcli-plugin-test';
-import { InvokePlugin } from '@midwayjs/fcli-plugin-invoke';
-import { PackagePlugin } from '@midwayjs/fcli-plugin-package';
-import { DeployPlugin } from '@midwayjs/fcli-plugin-deploy';
-import { AliyunFCPlugin } from '@midwayjs/fcli-plugin-fc';
-import { CreatePlugin } from '@midwayjs/fcli-plugin-create';
+import { BaseCLI, getSpecFile } from './core';
+import { TestPlugin } from './plugin/test';
+import { InvokePlugin } from './plugin/invoke';
+import { PackagePlugin } from './plugin/package';
+import { DeployPlugin } from './plugin/deploy';
+import { AliyunFCPlugin } from './plugin/fc';
+import { CreatePlugin } from './plugin/create';
 import { saveYaml } from '@midwayjs/serverless-spec-builder';
 import { execSync } from 'child_process';
 const { Select } = require('enquirer');
+
 export class CLI extends BaseCLI {
   loadDefaultPlugin() {
     this.core.addPlugin(CreatePlugin);
@@ -41,12 +42,12 @@ export class CLI extends BaseCLI {
     try {
       const nodeVersion = execSync('node -v').toString().replace('\n', '');
       log.log('Node.js'.padEnd(20) + nodeVersion);
-    } catch (E) {}
+    } catch (E) { }
 
     try { // midway-faas version
       const cliVersion = require('../package.json').version;
       log.log('@midwayjs/faas-cli'.padEnd(20) + `v${cliVersion}`);
-    } catch (E) {}
+    } catch (E) { }
   }
 
   displayUsage(commandsArray, usage, coreInstance) {
