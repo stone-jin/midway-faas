@@ -31,16 +31,18 @@ const OperationModal: FC<OperationModalProps> = props => {
   }, [props.visible]);
 
   useEffect(() => {
-    request(`/api/platform/config`, {
-      params: {
-        platform: 'aliyun',
-      },
-    }).then(result => {
-      setInfo(result.data);
-      form.setFieldsValue({
-        ...result.data,
+    if (current?.id) {
+      request(`/api/platform/config`, {
+        params: {
+          platform: current.id,
+        },
+      }).then(result => {
+        setInfo(result.data);
+        form.setFieldsValue({
+          ...result.data,
+        });
       });
-    });
+    }
   }, []);
 
   useEffect(() => {
