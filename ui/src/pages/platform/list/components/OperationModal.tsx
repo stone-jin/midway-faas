@@ -66,7 +66,7 @@ const OperationModal: FC<OperationModalProps> = props => {
     }
     const store = form.getFieldsValue();
     const result = Object.assign({}, info, store);
-    const res = await request(`/api/platform/config/update`, {
+    await request(`/api/platform/config/update`, {
       method: 'POST',
       data: {
         platform: 'aliyun',
